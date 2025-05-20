@@ -1,0 +1,8 @@
+<a id="title" href="{{ '/' | relative_url }}">{{ "Scott Gardner" | downcase }}</a>
+<nav>
+  {% for item in site.data.navigation %}
+    <a href="{{ item.link }}" {% if page.url == item.link %}id="selected_page"{% endif %}>
+        {{ item.name }}
+    </a>
+  {% endfor %}
+</nav>

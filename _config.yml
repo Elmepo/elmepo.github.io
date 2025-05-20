@@ -3,3 +3,8 @@ lang: en-AU
 title: "Scott Gardner"
 url: "https://sgardner.io"
 repo: "https://github.com/Elmepo/elmepo.github.io"
+
+sass:
+  load_paths:
+    - _sass
+  # style: compressed

@@ -1,0 +1,6 @@
+# link_hover: oklch(62.3% 0.214 259.815) # Blue 500
+# link_highlight: oklch(79.2% 0.209 151.711) # Green 400
+link_hover: $green-a100
+link_highlight: $green-a400
+background: $grey-900
+text: $grey-50
