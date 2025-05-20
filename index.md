@@ -1,13 +1,13 @@
 ---
-title: Index page
+title: Scott Gardner
 layout: default
 ---
 # Hi! My name is *Scott Gardner*
 I'm an experienced Sydney based Software Engineer specialising in DevOps and Site Reliability Engineering with nine years of hands on experience truning fragile deployments into repeatable, self-healing systems.
 
-I currently lead the Devops Team at [Hanasoft](https://hanasoft.com.au), guiding engineers in shipping sevices for multiple clients in AWS reliably and efficiently across our infrastructure by writing automation pipelines and building internal platforms to empower our development teams.
+I currently lead the Devops Team at <a target="_blank" href="https://hanasoft.com">Hanasoft</a>, guiding engineers in shipping sevices for multiple clients in AWS reliably and efficiently across our infrastructure by writing automation pipelines and building internal platforms to empower our development teams.
 
-Previously I've scaled infrastructure at [Ping Identity](https://pingidentity.com) and [IBM](https://ibm.com), utilising the latest tools and techniques in zero-downtime, highly available deployments across global infrastructure all while matching tight security requirements.
+Previously I've scaled infrastructure at <a target="_blank" href="https://pingidentity.com">Ping Identity</a> and <a target="_blank" href="https://ibm.com">IBM</a> utilising the latest tools and techniques in zero-downtime, highly available deployments across global infrastructure all while matching tight security requirements.
 
 To do all of this, I've become profficient in building linux based infrastructure with Terraform and Pulumi to run Go and Python workloads and automation processes inside Jenkins, Gitlab CI, and BitBucket pipelines.
 
