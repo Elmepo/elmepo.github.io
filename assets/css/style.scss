@@ -1,0 +1,26 @@
+---
+---
+/* @import original theme */
+@import 'primer';
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
+html, body {
+    font-family: 'Roboto Mono', monospace;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  gap: 1rem;
+}
