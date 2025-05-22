@@ -1,0 +1,12 @@
+<ul id="blog-posts">
+{% for post in site.posts %}
+{% if post.categories contains "blog" %}
+    <li id="{{ post.title}}">
+        <span>{{ post.date | date: "%F" }}</span>
+        <a href="{{ post.url }}">
+        <span>{{ post.title }}</span>
+        </a>
+    </li>
+{% endif %}
+{% endfor %}
+</ul>

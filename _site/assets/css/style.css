@@ -2884,9 +2884,9 @@ pre { margin-top: 0; margin-bottom: 0; font-family: "SFMono-Regular", Consolas, 
 
 .highlight { background-color: #f8f8f8; }
 
-html, body { font-family: 'Roboto Mono', monospace; height: 100%; margin: 0; background-color: #212121; color: #fafafa; }
+html, body { font-family: 'Roboto Mono', monospace; margin: 0; background-color: #212121; color: #fafafa; }
 
-body { display: flex; align-items: center; justify-content: center; }
+body { min-height: 100vh; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
 
 nav { display: flex; flex-direction: row; justify-content: space-around; align-items: center; width: 50%; max-width: 80%; margin: 0 auto; }
 
@@ -2902,6 +2902,16 @@ a:hover { color: #b9f6ca; text-decoration: none; }
 
 #selected_page { color: #00e676; font-weight: bold; }
 
-#title, #title:visited { display: flex; justify-content: center; font-size: 4rem; text-decoration: none; color: #fafafa; }
+#title, #title:visited { display: flex; justify-content: center; font-size: 8rem; text-decoration: none; container-type: inline-size; color: #fafafa; margin-top: 1.5rem; margin-bottom: 1.5rem; }
 
+#title-header { font-size: clamp(1rem, 2.5rem, 3rem); line-height: 1; white-space: nowrap; }
+
+@media (min-width: 768px) { #title, #title:visited { display: flex; justify-content: center; font-size: 4rem; text-decoration: none; color: #fafafa; } }
 #title:hover { color: #b9f6ca; }
+
+#blog-posts { display: flex; flex-direction: row; list-style: none; }
+
+@media (min-width: 768px) { #blog-posts { justify-content: space-around; } }
+#blog-header { text-align: center; font-size: clamp(1rem, 1.5rem, 2rem); }
+
+@media (min-width: 768px) { #blog-header { margin-right: auto; margin-left: auto; } }

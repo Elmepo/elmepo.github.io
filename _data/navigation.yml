@@ -2,5 +2,5 @@
 #   link: /
 - name: About
   link: /
-# - name: Blog
-#   link: /blog
+- name: Blog
+  link: /blog

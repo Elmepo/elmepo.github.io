@@ -9,10 +9,9 @@ I currently lead the Devops Team at <a target="_blank" href="https://hanasoft.co
 
 Previously I've scaled infrastructure at <a target="_blank" href="https://pingidentity.com">Ping Identity</a> and <a target="_blank" href="https://ibm.com">IBM</a> utilising the latest tools and techniques in zero-downtime, highly available deployments across global infrastructure all while matching tight security requirements.
 
-To do all of this, I've become profficient in building linux based infrastructure with Terraform and Pulumi to run Go and Python workloads and automation processes inside Jenkins, Gitlab CI, and BitBucket pipelines.
+I'm profficient in building linux based infrastructure with Terraform or Pulumi, I can write workloads in whatever language you want but I'm best in Go and Python, and I've written automated pipelines inside Jenkins, Gitlab CI, BitBucket pipelines, and CodePipeline.
 
 Reach out if you think you need someone with an experienced practictioners eye for detail and leaders focus on velocity and performance with a genuine passion for modern software development patterns.
 
 *If you're solving **Scale**, **Reliability**, or **Automation** problems, let's talk.*
 
-{% include socials.html %}

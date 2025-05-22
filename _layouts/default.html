@@ -2,18 +2,24 @@
 <html>
     <head>
         <meta charset="{{ site.encoding }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ page.title }}</title>
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             referrerpolicy="no-referrer">
+        <link rel="icon" type="image/png" href="/assets/files/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/assets/files/favicon.svg" />
+        <link rel="shortcut icon" href="/assets/files/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/files/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="sgardner.io" />
+        <link rel="manifest" href="/assets/files/site.webmanifest" />
     </head>
     <body>
         <div class="main">
-            <div class="header">
-                {% include header.html %}
-            </div>
+            {% include header.html %}
             {{ content }}
+            {% include socials.html %}
         </div>
     </body>
 </html>

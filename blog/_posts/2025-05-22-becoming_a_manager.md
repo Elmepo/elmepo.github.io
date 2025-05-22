@@ -1,0 +1,23 @@
+---
+title: Becoming a manager
+tags: management
+---
+# Thoughts after 1 year of management
+
+I’ve officially been a team lead, managing up to 4 people, for one year. Like many people, I had held unofficial leadership positions before, but the last 12 months marked the first time that was official, with all the ups and downs that come with it. It’s been an interesting journey - and I’ve learned some incredibly important, interesting, and often conflicting things about management.
+
+The first thing that I had to come to terms with was just how different the job was. I was promoted internally to lead the very same team I had previously been part of, and so I assumed that there wouldn’t be that much difference. Sure I’d be in a few more meetings, I’d have to write the occasional report and deal with the odd interpersonal problem, but it’s not like much would change, right?
+
+I couldn’t have been more wrong. For one thing, it wasn’t just “a few more meetings”. My calendar might have been free, but barely a day went by that I didn’t have multiple long conversations about some issue that needed to be raised or resolved, from both inside and outside my team. Along with necessary admin work and other duties, as a programmer I really started to understand PG’s Manager Time/Maker Time essay. My technical work quality was immediately directly tied to how much time I had that day.
+
+This started to become a problem because as a Team Lead, I was still expected to perform technical tasks. I quickly found myself struggling to keep up with technical details and specifics, and would often find myself having to backtrack on something I said or committed to. I would eventually read that Google considers the Team Lead position to be one of the most stressful and complex positions for this exact reason - you need to be capable of performing both management and technical tasks just as good as somebody specialising in either, with half the time.
+
+I was also surprised to learn just how much of the job was political. As a manager you’re more privy to the goings on in the company, and you find yourself thinking on a different level than you may have ever done as an individual contributor. You see the reasons why an underperforming team is still being kept around or why certain product lines are being explored, and you also start to understand exactly where you and your team sit in the value stream and (hopefully) the value they bring to your company.
+
+This becomes a background process constantly running in your head. Suddenly, decisions aren’t necessarily so clear. You’re weighing up not just what the team wants to do and what they think is important, but how that will affect the team and the rest of the organisation. Spending time rewriting a service in a new language might help your team in the future, but another team relies on it and needs changes made yesterday or they might miss quarterly goals.
+
+The words you use also suddenly become much more important. You’re hiring for a position and people are suggesting reaching out to a former colleague you know won’t be rehired. Do you avoid the topic or say something non-committal? People are complaining about how infrequently someone is in the office, do you reveal they’re going through an intense personal issue right now, or do you say nothing and potentially impact that person's workplace relationships? When you’re talking to non-technical people, how do you communicate complex technical topics and problems and how they relate to the changing dates you’ve committed to?
+
+There’s rarely any right answers in the role and you’re usually trying to find the right balance between multiple less than ideal scenarios. These issues are also very rarely visible on any kind of fair timeframe. You won't know if you made the right decision until weeks, months, or potentially even years later. Coming from a programming background where getting fast feedback loops was considered baseline requirements, and changes that took longer than a few minutes to verify considered "slow", this was easily the hardest aspect of management for me to come to terms with.
+
+Gradually, however, you get better at it. In the same way a junior engineer doesn't understand basic sorting functions at first and slowly over time learns the logic and reasoning behind them, you start to understand what you need to do, and decisions come to you more naturally. Sometimes, this is because you've been bitten before or you've been warned it could come up. Other times you just get a feeling in your stomach telling you which direction to take or what words to use even if you don't really know *why* you think so. Eventually, things that were incredibly alien at first become more natural and effortless.
