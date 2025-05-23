@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-au"
+      data-color-mode="dark"
+      data-dark-theme="dark_dimmed">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>You're probably thinking about automation the wrong way</title>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            referrerpolicy="no-referrer">
+        <link rel="icon" type="image/png" href="/assets/files/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/assets/files/favicon.svg" />
+        <link rel="shortcut icon" href="/assets/files/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/files/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="sgardner.io" />
+        <link rel="manifest" href="/assets/files/site.webmanifest" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@primer/css@^21/dist/primer.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@primer/css@^21/dist/color-modes.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="header">
+    <a id="title" href="/"><span id="title-header">scott gardner</span></a>
+    <nav>
+        
+        <a href="/" >
+            About
+        </a>
+        
+        <a href="/blog" >
+            Blog
+        </a>
+        
+    </nav>
+</div>
+
+            <h1 id="youre-probably-thinking-about-automation-the-wrong-way">You’re probably thinking about automation the wrong way</h1>
+<!-- {: #blog-header} -->
+
+<p>In infrastructure there’s a term that gets thrown around a lot among SREs and Platform Engineers, “Sysadmin who codes”. As DevOps began gaining more popularity and roles began to change, with roles like Site Reliability Engineer, Platform Engineer, and DevOps Engineer<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, People who had previously worked as Systems Administrators, rarely if ever writing any code, were suddenly required to become programmers. Often used in a somewhat derogatory way, it’s presence is a strong indicator of how the DevOps community views ourselves and our roles - where we are and where we’ve come from.</p>
+
+<p>The difference between an SRE and a “Sysadmin who codes” might not immediately be obvious, particularly to anyone not in our industry. After all, isn’t that what Site Reliability Engineering is all about? Isn’t that just what Google did? Hired Sysadmins who could code? Why would that be a bad thing? It’s easy to see how the narrative was formed, but the reality is that Google never did that. Instead, Google did the opposite. They hired Software Engineers and set them to working on their infrastructure. This (to some subtle) difference is responsible for arguably the biggest scism in our industry.</p>
+
+<p>So what’s the difference? In short, it’s the approach and mindset, and to a smaller extent the skills and capabilities. “Sysadmins who code” often have a more process orientated mindset and a view to resolving problems using less abstract ways. Typically while they have the ability to write code, they lack any training and may find themselves unable to understand relatively basic algorithms and why they’re used. In my experience, the code I’ve seen from these kinds of engineers is functional, but not particularly maintainable.</p>
+
+<p>The biggest way I’ve noticed this manifesting is the way in which people approach resolving problems via “automation”. To me it’s one of the biggest indicators of someone’s mindset and potential red flags to look out for when interviewing or talking to people. A “Sysadmin who codes” views a script as an automated replacement for themselves - a digital record of the actions they would take with little to no internal logic or problem solving. Most engineers I know, understand that the actions a person needs to take to perform a task isn’t always the actions that a computer should take.</p>
+
+<p>Often, this also relates to how the program is run and where responsibility for any impacts lies. Most sysadmins I’ve seen take a certain view that programs shouldn’t make “serious” decisions, instead requiring user input or confirmation for those steps. On some level, this can be unavoidable - sometimes things are just too dangerous to avoid at least a confirmation. In my experience though, this is usually a sign that a process is broken somewhere, and that’s what should be focused on instead. In my opinion, good engineers understand that responsibility for a programs lie with the program itself, not on the user or process running the program. If I give you a program to reset the data in a test database, if it accidentally overwrites the production database, we shouldn’t blame the user but rather the system that allowed the mistake in the first place.</p>
+
+<p>This will usually also be seen in a reverence for runbooks and documentation. Not that I have any issues with either - they’re incredibly important components of any system, but not everything needs to be documented and realistically everytime a runbook is written, you should be asking youself if that’s the best solution. This is where the sysadmins who code often have the biggest trouble in my experience. Historically that was the best way to solve problems as a sysadmin - write down exactly what you did to resolve an issue - after all maybe it’ll happen again next year long after you’re gone and no one else knows exactly what you did or even why. With computers though? They never forget and they never make mistakes or change how they do things, even when you want them to. In my view, self-healing script triggered by an alert &gt; Runbook explaining which script or pipeline to run &gt; Runbook explaining what commands to run.<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+
+<p>All of this isn’t to say that there’s no space left for Systems Administrators in our industry, or even that a team solely of “Sysadmins who code” is a red flag in of itself. With these kinds of things I think it’s always important to remember the context that people are in - how big is the company and how complex is their infrastructure? How important is software to the business’s profit margins? You don’t need to be writing complex programs for a local accountancy. It is, however, important to watch out for when you <strong>do</strong> need to be tackling these complex problems.</p>
+
+<p>If you’re working in an environment that requires self healing infrastructure, that requires <a href="uptime.is/three-nines">3 or more 9’s of uptime</a>, it’s more or less impossible to get there with people who have this kind of mindset. Complex, highly available environments require automated processes that are capable for thinking and reasoning for themselves<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup>. After all, if you have an SLA with no longer than 30 minutes downtime per month, you’re probably losing half of that time just in your oncall engineer responding to the alert. Add on that you’re almost certainly not alerting issues immediately but on some kind of timeseries based metric, and it’s not unimaginable that by the time the problem has occurred, alerted (and woken up) your oncall engineer, they’ve drearily booted up their laptop, looked at the issue and determined the script to run to fix the issue, you’ve already blown past not just this months SLA, but possibly next months as well. You need something that is a) never asleep and b) capable of immediately taking action.</p>
+
+<hr />
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Generally speaking I hate the term “DevOps Engineer” and consider it to be the same as “Scrum Master” - examples of roles that should never have existed and go against their very origins, but that’s a topic for another day. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>It’s always worth remembering that while it’s unlikely your cloud CI server will be down, it can happen and so the best self-healing system is either self-healing itself or simply calls a script that your oncall engineer <em>could</em> run themselves if the CI server did die. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>Within reason <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+            <ul class="important_list">
+
+<li>
+    <a target="_blank" href="https://github.com/Elmepo" class="icon-link">
+        <i class="fa-brands fa-github-square" aria-hidden="true"></i>
+        <span class="label">GitHub</span>
+    </a>
+</li>
+
+<li>
+    <a target="_blank" href="assets/files/ScottGardner-May-2025.pdf" class="icon-link">
+        <i class="fa fa-file-text" aria-hidden="true"></i>
+        <span class="label">Resume</span>
+    </a>
+</li>
+
+<li>
+    <a target="_blank" href="https://www.linkedin.com/in/scott-gardner-38211396/" class="icon-link">
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+        <span class="label">Linkedin</span>
+    </a>
+</li>
+
+</ul>
+
+        </div>
+    </body>
+</html>
