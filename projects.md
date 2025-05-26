@@ -8,5 +8,4 @@ layout: default
 <!-- - Clicking on the header or the image should take you directly to the project page -->
 
 # Past Projects
-
-- [Rock Paper Scissors](https://github.com/Elmepo/paper_scissors_rock) using computer vision
+{% include projects.html %}

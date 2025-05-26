@@ -1,0 +1,22 @@
+<div id="project-list">
+{% for project in site.data.projects %}
+    <div class="project-container">
+        <div class="thumb-container">
+            {% if project.video %}
+            <video autoplay muted playsinline loop poster="{{ project.image | default: 'assets/files/logo.png' | relative_url }}" class="project-thumb">
+                <source src="{{ project.video | relative_url }}" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+            {% else %}
+            <img src="{{ project.image | default: 'assets/files/logo.png' | relative_url }}" class="project-thumb">
+            {% endif %}
+        </div>
+        <div class="project-info">
+            <a href="{{ project.url }}"><h3>{{ project.name }}</h3></a>
+            {% if project.description %}
+            <p>{{ project.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+</div>

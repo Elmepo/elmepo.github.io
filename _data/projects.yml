@@ -1,0 +1,11 @@
+- name: Computer Vision Scissors Paper Rock
+  description: Play Scissors Paper Rock via webcam with zero clicks or controllers. Uses OpenCV to track your hand with classification via MediaPipe.
+  image: assets/files/rock_paper_scissors_demo_thumb.png
+  video: assets/files/rock_paper_scissors_demo.webm
+  url: https://github.com/Elmepo/paper_scissors_rock
+- name: WIP Terminal Editor
+  description: Neovim-inspired text editor rendered with raw TTY escapes in Go for ultra fast, dependency free editing.
+  url: https://github.com/Elmepo/text_editor
+- name: This website
+  description: This entire website is a custom jekyll build with SCSS styling using Github pages to keep things lightweight.
+  url: https://github.com/Elmepo/elmepo.github.io
