@@ -15,6 +15,8 @@ a:visited { color: var(--color-link-highlight); text-decoration: none; }
 
 a:hover { color: var(--color-link-hover); text-decoration: none; }
 
+ul { list-style-position: inside; }
+
 .main { display: flex; flex-direction: column; justify-content: center; width: 80%; gap: 1rem; }
 
 .important_list { display: flex; flex-direction: row; justify-content: space-around; list-style: none; }
