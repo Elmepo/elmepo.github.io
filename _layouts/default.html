@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en-au"
-      data-color-mode="dark"
+      data-color-mode="auto"
+      data-light-theme="light"
       data-dark-theme="dark_dimmed">
     <head>
         <meta charset="{{ site.encoding }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ page.title }}</title>
+        <!-- Later -->
+        <script async src="{{ 'assets/scripts/dark_mode_toggle.js' | relative_url }}"></script>
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-JHJ81Q28CJ"></script>
         <script>
@@ -31,6 +34,10 @@
     <body>
         <div class="main">
             {% include header.html %}
+            <div data-theme-toggle class="dark-mode-toggle">
+                <!-- <i class="fa-solid fa-toggle-off" aria-hidden="true"></i> -->
+                <span class="label">Dark Mode</span>
+            </div>
             {{ content }}
             {% include socials.html %}
         </div>
