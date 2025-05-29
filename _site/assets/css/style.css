@@ -17,6 +17,10 @@ a:hover { color: var(--color-link-hover); text-decoration: none; }
 
 ul { list-style-position: inside; }
 
+.inline-image { margin-left: auto; margin-right: auto; }
+
+.inline-image > img { max-width: 100%; height: auto; }
+
 .main { display: flex; flex-direction: column; justify-content: center; width: 80%; gap: 1rem; }
 
 .important_list { display: flex; flex-direction: row; justify-content: space-around; list-style: none; }

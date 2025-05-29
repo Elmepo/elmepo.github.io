@@ -7,3 +7,6 @@
 - name: Linkedin
   link: "https://www.linkedin.com/in/scott-gardner-38211396/"
   icon: fa-brands fa-linkedin-in
+- name: RSS
+  link: /feed.xml
+  icon: fa-solid fa-rss

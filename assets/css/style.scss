@@ -67,6 +67,16 @@ ul {
   list-style-position: inside;
 }
 
+.inline-image {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inline-image > img {
+  max-width: 100%;
+  height: auto;
+}
+
 .main {
   display: flex;
   flex-direction: column;
