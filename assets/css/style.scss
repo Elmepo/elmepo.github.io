@@ -1,11 +1,10 @@
 ---
 ---
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-
 @import 'material/color-palette';
+@import url('/assets/css/syntax-dark.css');
 
 [data-color-mode="dark"] {
-  @import url('/assets/css/syntax-dark.css');
   --color-link-highlight: #{$green-a400};
   --color-link-hover: #{$green-a100};
   --color-text: #{$grey-50};
@@ -13,7 +12,6 @@
 }
 
 [data-color-mode="light"] {
-  @import url('/assets/css/syntax-light.css');
   --color-link-highlight: #{$blue-800};
   --color-link-hover: #{$blue-600};
   --color-text: #{$grey-900};
@@ -63,7 +61,7 @@ a:hover {
   text-decoration: none;
 }
 
-ul {
+ul, ol {
   list-style-position: inside;
 }
 
