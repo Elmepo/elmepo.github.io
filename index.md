@@ -5,7 +5,7 @@ layout: default
 # Hi! My name is *Scott Gardner*
 I'm an experienced Sydney based Software Engineer specialising in DevOps and Site Reliability Engineering with over nine years of hands on experience turning fragile deployments into repeatable, self-healing systems.
 
-I currently work as a Site Reliability Engineer at <a target="_blank" href="tiktok.com">TikTok</a>.
+I currently work as a Site Reliability Engineer at <a target="_blank" href="https://tiktok.com">TikTok</a>.
 
 I've previously led the DevOps Team at <a target="_blank" href="https://hanasoft.com">Hanasoft</a>, guiding engineers in shipping services for multiple clients in AWS reliably and efficiently across our infrastructure by writing automation pipelines and building internal platforms to empower our development teams. Before that I scaled infrastructure at <a target="_blank" href="https://pingidentity.com">Ping Identity</a> and <a target="_blank" href="https://ibm.com">IBM</a> utilising the latest tools and techniques in zero-downtime, highly available deployments across global infrastructure all while matching tight security requirements.
 
