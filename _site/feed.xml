@@ -1,4 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-AU"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-AU" /><updated>2025-12-23T22:48:23+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Scott Gardner</title><entry><title type="html">Why Oncall Rotations Break</title><link href="http://localhost:4000/blog/why-oncall-rotations-break" rel="alternate" type="text/html" title="Why Oncall Rotations Break" /><published>2025-12-21T00:00:00+11:00</published><updated>2025-12-21T00:00:00+11:00</updated><id>http://localhost:4000/blog/why-oncall-rotations-break</id><content type="html" xml:base="http://localhost:4000/blog/why-oncall-rotations-break"><![CDATA[<h1 id="blog-header">Why Oncall Rotations Break</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-AU"><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-AU" /><updated>2025-12-29T12:41:12+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Scott Gardner</title><entry><title type="html">When you need Kubernetes</title><link href="http://localhost:4000/blog/when-you-need-kubernetes" rel="alternate" type="text/html" title="When you need Kubernetes" /><published>2025-12-29T00:00:00+11:00</published><updated>2025-12-29T00:00:00+11:00</updated><id>http://localhost:4000/blog/when-you-need-kubernetes</id><content type="html" xml:base="http://localhost:4000/blog/when-you-need-kubernetes"><![CDATA[<h1 id="when-you-need-kubernetes">When you need Kubernetes</h1>
+<p style="text-align: center;">(And when you don’t)</p>
+
+<p>Kubernetes is a truly impressive piece of technology. Born in the fires
+of Google, it solves the kind of problem that really only companies like
+Google encounter. For smaller companies, however, Kubernetes effectively
+becomes a trap - a complex beast with many different landmines eager to
+create chaos when triggered, chaos that may be difficult to wind back.
+So then why do so many people fall into the trap? Often, it feels like a
+mixture of people making certain assumptions about their own migration,
+and failing to understand the underlying differences between their own
+environment and culture and those that excel with Kubernetes.</p>
+
+<p>Kubernetes is a completely different environment than your traditional
+VM based environment or even cloud container environments like ECS or
+Lambda. Failing to understand the assumptions that many other people
+make when deciding to migrate to kubernetes could very easily lead you
+into traps that are difficult to escape from or that could cause serious
+harm. Consider, for example, how a team might fare if they currently
+assume that they can log in to a server to manually make changes if a
+release goes wrong. Acceptable in a VM based environment, but much more
+difficult in kubernetes where containers are far more ephemeral and
+changes you make can quickly be gone and replaced with their original
+(buggy) versions without you ever noticing.</p>
+
+<p>Seeing kubernetes succeed or fail in other environments doesn’t tell you
+how it will impact your own environment. These assumptions are usually
+where teams get this wrong.</p>
+
+<h2 id="assumption-1-kubernetes-makes-deployments-easier">Assumption 1: Kubernetes makes deployments easier</h2>
+
+<p>A common refrain I hear from people who are discussing moving to
+kubernetes, is the belief that it will somehow magically make their
+deployments “easier”. Often, it’s the opposite. Deployments without
+kubernetes tend to be simple: Update the code for a cloud function in
+AWS Lambda, or deploying the image to your physical servers/container
+service. Your engineers are able to easily understand the immediate
+aftereffects, and reverse them.</p>
+
+<p>Kubernetes makes this entire process more complex with the addition of
+multitudes of variables that, yes, can make deployments easier. Those
+same variables can also make deployments much more dangerous. Take, for
+example, <code class="language-plaintext highlighter-rouge">imagePullPolicy</code>. This variable is used to control whether or
+not to pull the container image before starting it. Generally speaking,
+most guides and LLM outputs will default to <code class="language-plaintext highlighter-rouge">imagePullPolicy:
+IfNotPresent</code>. It’s a good option for most production workloads. It will
+also wreak chaos on your deployments if you’re deploying with the latest
+tag rather than a versioned one. Because it only checks to see if there
+is a container with the current tag. A likely scenario exists in which
+your deployment reports successful, but only half of your production
+containers are using the correct version of your app.</p>
+
+<p>The complexity is, in fact, the positive of Kubernetes. Larger
+environments require more complex deployments that allow for the nuances
+that reflect the competing priorities and realities each team has. If
+all of your teams have (more or less) the same environment, the same
+requirements, the same deployment logic? Kubernetes adds overhead that
+has to be managed that’s probably not giving you a reasonable return.</p>
+
+<h2 id="assumption-2-kubernetes-is-needed-as-you-scale">Assumption 2: Kubernetes is needed as you scale</h2>
+
+<p>Almost on the entirely opposite side of the equation, many companies
+shift to kubernetes as they scale. They start hitting massive volumes of
+traffic and experiencing scaling issues. Maybe traffic isn’t entirely
+predictable, with large jumps or drops without much rhyme or reason in
+the moment. Kubernetes seems like an easy answer - individual components
+can scale to meet customer needs almost instantaneously assuming your
+containers have been written reasonably well.</p>
+
+<p>But does this <em>really</em> match what you’re experiencing? If you’re running
+on virtual machines like EC2, perhaps you’re better off simply
+purchasing for peak traffic. It’s more expensive, but unlikely to
+bankrupt you while reducing the overall complexity of your environment.
+If you’re running on top of a containerised service like ECS or Lambda,
+scaling is already taken care of. Maybe you’re coming close to hitting
+things like Lambda’s reserved concurrency limit, in which case, fair!
+Maybe you do need to start making the tradeoffs kubernetes offers.</p>
+
+<p>But more often than not, people believe kubernetes is required for
+<em>technical scale</em>, which likely doesn’t apply to their use case as
+closely as they believe. Kubernetes can help with scaling issues, both
+technically and business wise as teams grow and splinter from common
+frameworks/languages/approaches. But it isn’t the only way to achieve
+that goal.</p>
+
+<h2 id="assumption-3-kubernetes-is-required-for-microservices">Assumption 3: Kubernetes is required for Microservices</h2>
+
+<p>Possibly the most common refrain on this topic I hear is “We’re moving
+to kubernetes because we’re moving to microservices”. I understand why -
+the two are often treated as one and the same, or at the very least one
+a requirement for the other. But just because an application runs on
+kubernetes, or has been bundled into a container, does not make it a
+microservice.</p>
+
+<p>I’ve seen truly impressive workloads running in kubernetes, both
+positively and negatively. I once saw a setup that involved loading an
+entire AI model into a container’s memory on startup. The process took
+so long that startup took at least half an hour before the pod was ready
+and required node affinity that meant we were effectively running single
+pod nodes across the entire cluster. We were told that it still counted
+as a “microservice”. Anyone who’s worked in the industry for long enough
+has seen a similar story.</p>
+
+<p>This is important to understand because microservices are often
+misunderstood because so many people have incorrectly implemented them,
+and make assumptions on that experience. If microservices are the
+approach that’s right for your business, understand that kubernetes
+isn’t a requirement, at the very least not in the early stages. You can
+easily run microservices inside of a managed container environment like
+ECS, which leaves the door open to an eventual migration to kubernetes
+if that is the best approach. Maybe you don’t even need a containerised
+environment - even to this day netflix runs many of it’s microservices
+on top of ec2. Microservices are incredibly complex and difficult to get
+right. I personally believe that if you’re going to make the transition
+from a monolithic architecture to a microservices based architecture,
+any transition to kubernetes should be the last step.</p>
+
+<p>Instead, you should focus on factoring your applications correctly to
+better split up the codebase, and writing production ready containers
+that can be run in a cloud container service first, after which you can
+determine if kubernetes meets your needs.</p>
+
+<p>Look, I get it. Kubernetes is perpetually a popular topic in tech talks
+and at conferences. It’s got a great community and lots of support for
+people whether you’re looking to write your first deployment or you’re
+an experienced developer looking to write custom controllers. It’s what
+people are led to believe powers “big tech” and that’s an easy sell to
+management if you believe that it might help resolve your problems.
+Maybe it will. But it’s important to understand the implicit beliefs
+that aren’t being said in those talks, and to understand the tradeoffs
+that you’re making when you transition to kubernetes.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[When you need Kubernetes (And when you don’t)]]></summary></entry><entry><title type="html">Why Oncall Rotations Break</title><link href="http://localhost:4000/blog/why-oncall-rotations-break" rel="alternate" type="text/html" title="Why Oncall Rotations Break" /><published>2025-12-21T00:00:00+11:00</published><updated>2025-12-21T00:00:00+11:00</updated><id>http://localhost:4000/blog/why-oncall-rotations-break</id><content type="html" xml:base="http://localhost:4000/blog/why-oncall-rotations-break"><![CDATA[<h1 id="blog-header">Why Oncall Rotations Break</h1>
 
 <p>Oncall is on the few guarantees in life as a modern software engineer working on anything that’s expected to be constantly available. Whether you’re working on critical financial infrastructure, or a simple habit tracking app, most software engineers at high performing companies are expected to find some way to make sure that someone is always available in case things truly go south.</p>
 
@@ -106,19 +236,7 @@ A final line at the end
 <h2 id="3-scrum-usually-forces-developers-to-avoid-silos">3. Scrum (usually) forces developers to avoid silos</h2>
 <p>Whilst not <em>strictly</em> scrum, I think it’s fair to say that 99 percent of scrum teams consist of multiple developers across different functions. This is without a doubt a massive benefit. By forcing developers from different functions to consistently interact with people from other functions, you avoid a whole host of problems. Your backend developer is aware of how the frontend will consume their api. QA is aware of how exactly the backend is processing data, so they can ensure all bases are covered by their tests.</p>
 
-<p>In a perfect world, this will also result in a cross pollination effect, where each developer can start to pick up skills and approaches from other functions. You might not end up with a team of fullstack engineers proficient in every language and framework under the sun, but at least they’ll start to have an appreciation for the limitations and strengths of the tools used by everyone in the team.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[So when is scrum good?]]></summary></entry><entry><title type="html">What’s left to do</title><link href="http://localhost:4000/blog/todo" rel="alternate" type="text/html" title="What’s left to do" /><published>2025-05-27T00:00:00+10:00</published><updated>2025-05-27T00:00:00+10:00</updated><id>http://localhost:4000/blog/todo</id><content type="html" xml:base="http://localhost:4000/blog/todo"><![CDATA[<h1 id="todo">Todo</h1>
-
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add a picture to the about page</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Take pictures for the projects page
-    <ul class="task-list">
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Text Editor</li>
-      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Blog</li>
-    </ul>
-  </li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Get text editor to v1</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Deploy Cafeok project to the public</li>
-</ul>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[Todo]]></summary></entry><entry><title type="html">You don’t need scrum</title><link href="http://localhost:4000/blog/you-dont-need-scrum" rel="alternate" type="text/html" title="You don’t need scrum" /><published>2025-05-26T00:00:00+10:00</published><updated>2025-05-26T00:00:00+10:00</updated><id>http://localhost:4000/blog/you-dont-need-scrum</id><content type="html" xml:base="http://localhost:4000/blog/you-dont-need-scrum"><![CDATA[<h1 id="blog-header">You don’t need scrum</h1>
+<p>In a perfect world, this will also result in a cross pollination effect, where each developer can start to pick up skills and approaches from other functions. You might not end up with a team of fullstack engineers proficient in every language and framework under the sun, but at least they’ll start to have an appreciation for the limitations and strengths of the tools used by everyone in the team.</p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[So when is scrum good?]]></summary></entry><entry><title type="html">You don’t need scrum</title><link href="http://localhost:4000/blog/you-dont-need-scrum" rel="alternate" type="text/html" title="You don’t need scrum" /><published>2025-05-26T00:00:00+10:00</published><updated>2025-05-26T00:00:00+10:00</updated><id>http://localhost:4000/blog/you-dont-need-scrum</id><content type="html" xml:base="http://localhost:4000/blog/you-dont-need-scrum"><![CDATA[<h1 id="blog-header">You don’t need scrum</h1>
 
 <p>Something I’ve never really been able to mesh with a lot of people in my industry is that I just don’t get Scrum. It’s existence stands out as a weird anomaly in a field full of anomalies. As a part of our industry, in my opinion it’s the only standard that exists because we collectively have decided that against all evidence otherwise, it works.</p>
 
