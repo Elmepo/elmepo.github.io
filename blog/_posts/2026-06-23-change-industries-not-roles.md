@@ -2,6 +2,8 @@
 title: Change Industries, not Roles
 tags: career
 ---
+# {{ page.title }}
+{: #blog-header }
 
 There’s a somewhat hidden career move that I’ve seen far too many people be completely unaware of. It’s the type of move that can often result in careers leaping forwards ahead of their peers, and it’s one that I want to talk about.
 
